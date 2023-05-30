@@ -1,20 +1,46 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="container" class="container">
+    <div class="top-container">
+      <input type="text" class="calc-display" [value]="currentNumber" />
+    </div>
+    <div class="bottom-container">
+      <div class="left-container">
+        <div class="symbol-container">
+          <!-- operators -->
+          <button type="button" (click)="clear()" class="symbol" value="all-clear">AC</button>
+          <button type="button" (click)="delete(currentNumber)" class="symbol" value="all-clear">C</button>
+          <button type="button" (click)="getOperation('%')" class="symbol" value="%">%</button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        </div>
+        <div class="number-container">
+          <!-- digits -->
+          <button type="button" (click)="getNumber('7')" class="number" value="7">7</button>
+          <button type="button" (click)="getNumber('8')" class="number" value="8">8</button>
+          <button type="button" (click)="getNumber('9')" class="number" value="9">9</button>
+          <button type="button" (click)="getNumber('4')" class="number" value="4">4</button>
+          <button type="button" (click)="getNumber('5')" class="number" value="5">5</button>
+          <button type="button" (click)="getNumber('6')" class="number" value="6">6</button>
+          <button type="button" (click)="getNumber('1')" class="number" value="1">1</button>
+          <button type="button" (click)="getNumber('2')" class="number" value="2">2</button>
+          <button type="button" (click)="getNumber('3')" class="number" value="3">3</button>
+          <button type="button" (click)="about()" class="number" value="0"><ion-icon name="person-circle-outline"></ion-icon> </button>
+          <button type="button" (click)="getNumber('0')" class="number" value="0">0</button>
+          <button type="button" (click)="getDecimal()" class="numbers" value=".">.</button>
+
+          <!-- decimal-reset-equal -->
+        </div>
+      </div>
+      <div class="right-operator-container">
+        <button type="button" (click)="getOperation('+')" class="right-operator" value="+">+</button>
+        <button type="button" (click)="getOperation('-')" class="right-operator" value="-">-</button>
+        <button type="button" (click)="getOperation('*')" class="right-operator" value="*">&times;</button>
+        <button type="button" (click)="getOperation('/')" class="right-operator" value="/">&divide;</button>
+        <button type="button" (click)="getOperation('=')" class="right-operators" value="=">=</button>
+      </div>
+    </div>
   </div>
 </ion-content>

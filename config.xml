@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>MyApp</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+<widget id="com.digiprotechnology.cal" version="23.06.01" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>MR Calculator</name>
+    <description>An awesome Ionic-Cordova app.</description>
+    <author email="rohithmuthusamy98@gmail.com" href="http://ionicframework.com/">Rohith Muthusamy</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,76 +7,55 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  display :any;
 
-  currentNumber = '0';
-  firstOperand: any;
-  operator: any;
-  waitForSecondNumber = false;
-
-
-  public getNumber(v: string) {
-    if (this.waitForSecondNumber) {
-      this.currentNumber = v;
-      this.waitForSecondNumber = false;
-    } else {
-      this.currentNumber === '0' ? this.currentNumber = v : this.currentNumber += v;
-
-    }
+  addToDisplay(value: string) {
+    this.display += value;
   }
-  getDecimal() {
-    if (!this.currentNumber.includes('.')) {
-      this.currentNumber += '.';
-    }
+  deleteLastCharacter() {
+    this.display = this.display.slice(0, -1);
   }
-
-  private doCalculation(op: any, secondOp: number) {
-    switch (op) {
-      case '+':
-        return this.firstOperand += secondOp;
-      case '%':
-        return this.firstOperand %= secondOp;
-      case '-':
-        return this.firstOperand -= secondOp;
-      case '*':
-        return this.firstOperand *= secondOp;
-      case '/':
-        return this.firstOperand /= secondOp;
-      case '=':
-        return secondOp;
+  calculate() {
+    try {
+      this.display = eval(this.display);
+      return this.display
+    } catch (e) {
+      this.display = 'Error';
     }
+    this.display
   }
+ngOnInit(): void {
+  this.display='';
 
-  public getOperation(op: string) {
-
-    if (this.firstOperand === null) {
-      this.firstOperand = Number(this.currentNumber);
-
-    } else if (this.operator) {
-      const result = this.doCalculation(this.operator, Number(this.currentNumber))
-      this.currentNumber = String(result);
-      this.firstOperand = result;
-    }
-    this.operator = op;
-    this.waitForSecondNumber = true;
-  }
-
-  public clear() {
-    this.currentNumber = '0';
-    this.firstOperand = null;
-    this.operator = null;
-    this.waitForSecondNumber = false;
-  }
-  delete(currentNum:any) {
-    return this.currentNumber= currentNum.slice(0,-1)
-    }
-  constructor(private router: Router) {
-    this.clear()
-   }
-about(){
-this.router.navigate(['/about'])
 }
-  ngOnInit(): void {
-  }
+  clear() {
+    this.display='';
 
+  }
+  autoBracket() {
+    if (!this.display) {
+      this.display = '()';
+    } else {
+      let openBrackets = 0;
+      let closeBrackets = 0;
+
+      // Count the number of open and close brackets
+      for (let char of this.display) {
+        if (char === '(') {
+          openBrackets++;
+        } else if (char === ')') {
+          closeBrackets++;
+        }
+      }
+
+      // Add an open bracket if there are fewer open brackets than close brackets
+      if (openBrackets <= closeBrackets) {
+        this.display += '*(';
+      } else {
+        // Add a close bracket if there are fewer open brackets than close brackets
+        this.display += ')';
+      }
+    }
+  }
 }
 

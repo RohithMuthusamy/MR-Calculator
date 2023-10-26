@@ -1,13 +1,36 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-   </ion-buttons>
-    <ion-title>FEEDBACK</ion-title>
-  </ion-toolbar>
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Feedback</ion-title>
+   </ion-toolbar>
 </ion-header>
 
-&nbsp;&nbsp;&nbsp;<ion-content class="margin">
-  zsxdfghjkopoiuytrdxcv bnm,kiuytrdcvbnmjku
-  &nbsp;zsxdfghjkopoiuytrdxcv bnm,kiuytrdcvbnmjku
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">Feedback</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <form #feedback="ngForm" (ngSubmit)="val(feedback)">
+        <ion-item>
+          <ion-label position="floating">Email Id or name</ion-label>
+          <ion-input ngModel
+            #feedbackerEmailid="ngModel" name="feedbackerEmailid" type="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Title</ion-label>
+          <ion-input ngModel #Title="ngModel" name="Title" type="text" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea ngModel #commands="ngModel" name="commands" type="textarea" required></ion-textarea>
+        </ion-item>
+        <ion-button type="submit" [disabled]="!feedback.valid" expand="block" color="primary" required>Submit</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

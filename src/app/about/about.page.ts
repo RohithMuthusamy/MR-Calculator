@@ -9,20 +9,7 @@ import { Router } from '@angular/router';
 export class AboutPage implements OnInit {
 
   constructor(private router: Router) { }
-pp()
-{
-this.router.navigate(['/privacypolicy'])
-}
-contact()
-{
-  this.router.navigate(['/contact-details'])
 
-}
-feedback()
-{
-  this.router.navigate(['/feedback'])
-
-}
   ngOnInit() {
   }
 

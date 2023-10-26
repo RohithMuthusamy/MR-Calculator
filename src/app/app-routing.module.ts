@@ -27,6 +27,11 @@ const routes: Routes = [
     path: 'contact-details',
     loadChildren: () => import('./contact-details/contact-details.module').then( m => m.ContactDetailsPageModule)
   },
+  {
+    path: 'bmi',
+    loadChildren: () => import('./bmi/bmi.module').then( m => m.BmiPageModule)
+  },
+
 ];
 
 @NgModule({

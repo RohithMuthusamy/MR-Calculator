@@ -1,40 +1,50 @@
 <ion-header [translucent]="true">
-
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Calculator</ion-title>
+   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="screen-section">
-    <!-- <h3>188 x 8</h3> -->
-    <h1>{{currentNumber}}</h1>
-  </div>
+  <ion-header collapse="condense">
+    <ion-toolbar  color="primary">
+      <ion-title size="large">Calculator</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <input type="text" [(ngModel)]="display" onkeydown="return false" placeholder="0" class="textarea">
 
-  <div class="button-section">
-
-    <button type="button" (click)="clear()" class="operator" value="CE">AC</button>
-    <button type="button" (click)="delete(currentNumber)" class="operator" value="+-">CE</button>
-    <button type="button" (click)="getOperation('%')" class="operator" value="%">%</button>
-
-    <button type="button" (click)="getOperation('/')" class="operator" value="/">/</button>
-
-    <button type="button" (click)="getNumber('7')" value="7">7</button>
-    <button type="button" (click)="getNumber('8')" value="8">8</button>
-    <button type="button" (click)="getNumber('9')" value="9">9</button>
-    <button type="button" (click)="getOperation('*')" class="operator" value="*">&times;</button>
-
-    <button type="button" (click)="getNumber('4')" value="4">4</button>
-    <button type="button" (click)="getNumber('5')" value="5">5</button>
-    <button type="button" (click)="getNumber('6')" value="6">6</button>
-    <button type="button" (click)="getOperation('+')" class="operator" value="+">+</button>
-
-    <button type="button" (click)="getNumber('1')" value="1">1</button>
-    <button type="button" (click)="getNumber('2')" value="2">2</button>
-    <button type="button" (click)="getNumber('3')" value="3">3</button>
-    <button type="button" (click)="getOperation('-')" class="operator" value="-">-</button>
-
-    <button type="button" (click)="about()" class="decimal" value="0"><ion-icon
-        name="person-circle-outline"></ion-icon></button>
-    <button type="button" (click)="getNumber('0')" class="decimal" value="0">0</button>
-    <button type="button" (click)="getDecimal()" class="decimal" value=".">.</button>
-    <button type="button" (click)="getOperation('=')" class="equal-sign" value="=">=</button>
-  </div>
-</ion-content>
+      <div class="buttonsize">
+        <div class="buttonsizerow">
+          <button mat-raised-button class="example-button-op" (click)="clear()"><h1>AC</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="deleteLastCharacter()"><h1>CE</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="addToDisplay('%')"><h1>%</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="addToDisplay('/')" ><h1>/</h1></button>
+        </div>
+          <div class="buttonsizerow">
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('7')"><h1>7</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('8')"><h1>8</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('9')"><h1>9</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="addToDisplay('*')"><h1>*</h1></button>
+      </div>
+        <div class="buttonsizerow">
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('4')"><h1>4</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('5')"><h1>5</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('6')"><h1>6</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="addToDisplay('+')"><h1>+</h1></button>
+        </div>
+        <div class="buttonsizerow">
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('1')"><h1>1</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('2')"><h1>2</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('3')"><h1>3</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="addToDisplay('-')"><h1>-</h1></button>
+        </div>
+        <div class="buttonsizerow">
+          <button mat-raised-button class="example-button-op" (click)="autoBracket()"><h1>()</h1></button>
+          <button mat-raised-button class="example-button-row" (click)="addToDisplay('0')"><h1>0</h1></button>
+          <button mat-raised-button class="example-button-op" (click)="addToDisplay('.')"><h1>.</h1></button>
+          <button mat-raised-button class="example-button-equ" (click)="calculate()"><h1>=</h1></button>
+        </div>
+      </div>
+ </ion-content>

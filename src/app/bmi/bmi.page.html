@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>BMI Calculator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="con">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">BMI Calculator</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form #bmiCal="ngForm" (ngSubmit)="bmiCalculator(bmiCal)">
+    <ion-item class="con" lines="full">
+      <ion-label position="floating">Height (in cm)</ion-label>
+      <ion-input [(ngModel)]="height" name="height" type="number" minvalue=20 maxvalue="250"
+        placeholder="in centimeter"></ion-input>
+    </ion-item>
+    <ion-item class="con" lines="full">
+      <ion-label position="floating">Weight (in kg)</ion-label>
+      <ion-input [(ngModel)]="weight" name="weight" type="number" minvalue="2" maxvalue="250"
+        placeholder="in kilogram"></ion-input>
+    </ion-item>
+    <ion-button class="con" type="submit" color="primary">Calculate</ion-button>
+    <ion-button class="con" type="clear" (click)="valNull()" color="primary">Clear</ion-button>
+    <h2 class="con" *ngIf="bmi">Your BMI Value = {{bmi}}</h2>
+  </form>
+
+  <ion-card class="card">
+    <ion-row>
+      <ion-col>
+        Category
+      </ion-col>
+      <ion-col>
+        BMI range
+      </ion-col>
+    </ion-row>
+    <ion-card-content>
+      <ion-row *ngIf="bmi===null  || bmi<16">
+        <ion-col>Severe Thinness</ion-col>
+        <ion-col>
+          < 16</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi >=16 && bmi<17">
+        <ion-col>Moderate Thinness</ion-col>
+        <ion-col> 16 - 17</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi>=17 && bmi<18.50 ">
+        <ion-col>Mild Thinness</ion-col>
+        <ion-col> 17- 18.5</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi>=18.50 && bmi<25 ">
+        <ion-col>Normal</ion-col>
+        <ion-col>18.5 - 25</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi>=25 && bmi<30">
+        <ion-col>Overweight</ion-col>
+        <ion-col> 25 - 30</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi>=30 && bmi<35">
+        <ion-col>Obese Class I</ion-col>
+        <ion-col>30 - 35</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi>=35 && bmi<40">
+        <ion-col>Obese Class II</ion-col>
+        <ion-col>35 - 40</ion-col>
+      </ion-row>
+      <ion-row *ngIf="bmi===null  || bmi>40">
+        <ion-col>Obese Class III</ion-col>
+        <ion-col> > 40</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
